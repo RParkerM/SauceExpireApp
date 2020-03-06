@@ -2,7 +2,7 @@ import 'package:intl/intl.dart';
 
 class SauceExpiresData implements Comparable<SauceExpiresData> {
   final DateTime expireDate;
-  int amount = 0;
+  int amount = 1;
 
   SauceExpiresData(this.expireDate);
 

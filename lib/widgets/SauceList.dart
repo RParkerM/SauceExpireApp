@@ -22,11 +22,16 @@ class SauceList extends StatefulWidget {
   _SauceListState createState() =>
       _SauceListState(expireData: dataList, onUpdate: onUpdate);
 
-  List<SauceExpiresData> getExpiredSauces({DateTime date}) {
+  int getExpiredSauces({DateTime date}) {
     if (date == null) date = DateTime.now();
-    return dataList.list
-        .where((sauceData) => isDateEarlier(sauceData.expireDate, date))
-        .toList();
+    return dataList.list.fold(
+        0,
+        (total, element) =>
+            total +
+            (isDateEarlier(element.expireDate, date) ? element.amount : 0));
+    // return dataList.list
+    //     .where((sauceData) => isDateEarlier(sauceData.expireDate, date))
+    //     .toList();
   }
 
   bool isDateEarlier(DateTime a, DateTime b) {
@@ -54,7 +59,7 @@ class _SauceListState extends State<SauceList> {
     expireList.sort();
     return Container(
         height: 100,
-        margin: EdgeInsets.symmetric(vertical: 25),
+        margin: EdgeInsets.symmetric(vertical: 15),
         //margin: EdgeInsets.all(25),
         child: ListView.builder(
           scrollDirection: Axis.horizontal,

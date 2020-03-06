@@ -1,0 +1,12 @@
+Todo
+
+iOS theme?
+
+
+
+Done
+
+having the main page realize when there are expired sauces
+Modify main page to show loading screen rather than wait for SharedPrefs to load
+Theming?
+Remove extra stuff from Main dealing with loading
