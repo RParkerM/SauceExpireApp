@@ -59,7 +59,7 @@ class _SauceListState extends State<SauceList> {
     expireList.sort();
     return Container(
         height: 100,
-        margin: EdgeInsets.symmetric(vertical: 15),
+        margin: EdgeInsets.symmetric(vertical: 2),
         //margin: EdgeInsets.all(25),
         child: ListView.builder(
           scrollDirection: Axis.horizontal,
@@ -69,7 +69,7 @@ class _SauceListState extends State<SauceList> {
               return Container(
                 height: 10,
                 width: 100,
-                margin: EdgeInsets.all(10),
+                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 3),
                 alignment: Alignment.center,
                 child: Text(
                   widget.listName,
