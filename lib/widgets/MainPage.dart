@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:sauce_app_dog/models/DataHandler.dart';
+
+import '../models/DataHandler.dart';
 import '../models/SauceExpiresDataList.dart';
 import './SauceList.dart';
 
@@ -15,7 +16,7 @@ class MainPage extends StatefulWidget {
   _MainPageState createState() => _MainPageState();
 }
 
-class _MainPageState extends State<MainPage> {
+class _MainPageState extends State<MainPage> with WidgetsBindingObserver {
   final List<SauceList> sauceLists = [];
   bool hasExpiredSauces = false;
   bool saucesExpireBeforeAWeek = false;
@@ -35,7 +36,15 @@ class _MainPageState extends State<MainPage> {
         onUpdate: _onUpdate,
       ));
     });
-    checkIfSaucesExpired();
+    WidgetsBinding.instance.addObserver(this);
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) async {
+    if (state == AppLifecycleState.resumed) {
+      checkIfSaucesExpired();
+      this.setState(() {});
+    }
   }
 
   void _onUpdate(String listName, String serializedData) async {
