@@ -1,3 +1,5 @@
+![Screenshot](/images/Screenshot1.png)
+
 # sauce_app_dog
 
 A new Flutter project.
